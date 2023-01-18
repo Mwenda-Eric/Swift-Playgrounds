@@ -449,6 +449,23 @@ class Conditionals{
             return "X"
         }
     }
+    
+    internal func getGradeWithMarksSwitch(_ marks: Int) -> Character{
+        switch marks{
+        case 0..<40:
+            return "E"
+        case 40..<50:
+            return "D"
+        case 50..<60:
+            return "C"
+        case 60..<70:
+            return "B"
+        case 70...100:
+            return "A"
+        default:
+            return "X"
+        }
+    }
 }
 
 var conditional = Conditionals()
@@ -465,3 +482,10 @@ myGrade = conditional.getGradeWithMarks(40)
 myGrade = conditional.getGradeWithMarks(10)
 myGrade = conditional.getGradeWithMarks(58)
 myGrade = conditional.getGradeWithMarks(72)
+
+var myGradeUsingSwitch = conditional.getGradeWithMarksSwitch(0)
+myGradeUsingSwitch = conditional.getGradeWithMarksSwitch(40)
+myGradeUsingSwitch = conditional.getGradeWithMarksSwitch(50)
+myGradeUsingSwitch = conditional.getGradeWithMarksSwitch(60)
+myGradeUsingSwitch = conditional.getGradeWithMarksSwitch(70)
+myGradeUsingSwitch = conditional.getGradeWithMarksSwitch(343)
