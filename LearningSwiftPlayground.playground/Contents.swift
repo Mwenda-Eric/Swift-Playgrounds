@@ -13,12 +13,12 @@ class Person{
     static let firstName = "Eric"
     var lastName = "Mwenda"
     var favoriteSong = "Banners - Where The Shadow Ends!"
-    var favoriteMeal = "Rice"
+    var favoriteMeal = "I eat anything"
     var ericsConscious = InnerPerson()
     
     class InnerPerson{
-        static let innerCrush = "Nikita Kering"
-        var innerLove = "Ashley Onchangwa"
+        static let innerCrush = "Special Case"
+        var innerLove = "Mutu Wangu"
         var innerPasison: String = "Making Games"//Type inferencing used here.
     }
 }
@@ -31,17 +31,17 @@ let favoriteMeal = Person().favoriteMeal
 
 var ericsCrush = Person.InnerPerson.innerCrush
 var ericsLove = eric.ericsConscious.innerLove
-ericsCrush = "Sheila"
+ericsCrush = "Her"
 
 //Types --> Actual variable type that you are assigning.
 
 class Eric{
-    static let myAge: Int = 24
-    let myIdNumber: Int = 34611775
+    static let myAge: Int = 99
+    let myIdNumber: Int = 1111111111
     static let myFirstName: String = "Eric"
     var myLastName: String = "Mwenda"
     static let isAdult: Bool = true
-    var dreamSalary: Double = 450000.3454
+    var dreamSalary: Double = 450000004343934.3454
     var mpesaBalance: Float = 52.89
 }
 
