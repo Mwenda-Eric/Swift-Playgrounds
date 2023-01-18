@@ -5,4 +5,4 @@ Just a swift playground to practise more on Swift Programming.
 - Has some algorithms, basic concepts and Object Oriented Programming.
 - Very Verbose code.
 
-Find the 1 Code playground file [HERE]()
+Find the 1 Code playground file [HERE](https://github.com/Mwenda-Eric/Swift-Playgrounds/blob/main/SwiftPlayground.playground/Contents.swift)
