@@ -42,7 +42,7 @@ class Eric{
     var myLastName: String = "Mwenda"
     static let isAdult: Bool = true
     var dreamSalary: Double = 450000004343934.3454
-    var mpesaBalance: Float = 52.89
+    var mpesaBalance: Float = 00.00
 }
 
 var me: Eric = Eric()//Overall object to reference the non static variables.
