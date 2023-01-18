@@ -466,6 +466,13 @@ class Conditionals{
             return "X"
         }
     }
+    
+    internal func unwrapOptionalDoublesAndReturnSum(_ firstNumber: Double?, _ secondNumber: Double?) -> Double{
+        if let value1 = firstNumber, let value2 = secondNumber{//Note the second let is separated by multi clause ,
+            return value1 + value2
+        }
+        return 0
+    }
 }
 
 var conditional = Conditionals()
@@ -489,3 +496,5 @@ myGradeUsingSwitch = conditional.getGradeWithMarksSwitch(50)
 myGradeUsingSwitch = conditional.getGradeWithMarksSwitch(60)
 myGradeUsingSwitch = conditional.getGradeWithMarksSwitch(70)
 myGradeUsingSwitch = conditional.getGradeWithMarksSwitch(343)
+
+var optionalDoubleSum = conditional.unwrapOptionalDoublesAndReturnSum(432, 34)
