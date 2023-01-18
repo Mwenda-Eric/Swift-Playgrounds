@@ -18,7 +18,7 @@ class Person{
     
     class InnerPerson{
         static let innerCrush = "Special Case"
-        var innerLove = "Mutu Wangu"
+        var innerLove = "Chest Pweins"
         var innerPasison: String = "Making Games"//Type inferencing used here.
     }
 }
