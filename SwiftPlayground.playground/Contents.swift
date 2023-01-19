@@ -510,7 +510,7 @@ class Conditionals{
                 numberUnwrapped = (numberUnwrapped * 3) + 1
             }
             problemTotal += numberUnwrapped
-            print(numberUnwrapped)
+            //print(numberUnwrapped)
         }
         
         return problemTotal
@@ -549,3 +549,39 @@ var optionalIntSum: Int? = conditional.unwrapUsingGuardAndReturnMultiple(4, 10)
 
 var collatzNumber = 3
 var collatzConjectureSum = conditional.return3NPlus1SumOf(number: 43566)
+
+//Enums and Switch Statement.
+internal class EnumsAndSwitch{
+    
+    //You can do a multi line enum declaration separated by commas.
+    //you can also assign a default value to the enum if you wanted to.
+    internal enum WeatherSeason{
+        case Spring
+        case Summer
+        case Autum
+        case Winter
+    }
+    
+    internal func checkWeatherSeason(currentSeason: WeatherSeason) -> WeatherSeason{
+        switch currentSeason{
+        case .Spring://You don't have to say WatherSeason.Spring coz the compiler already knows the enum.
+            //You can also print the raw value of an assigned enum by using .rawValue on the enum.
+            //return .Spring.rawValue
+            print("Sunny, It's Spring Time")
+            return .Spring
+        case .Summer:
+            print("It's Summer Time!")
+            return .Summer
+        case .Autum:
+            print("It's Autum")
+            return .Autum
+        case .Winter:
+            print("Cold, It's Winter.")
+            return .Winter
+        }
+    }
+}
+
+var currentSeason: EnumsAndSwitch.WeatherSeason = EnumsAndSwitch.WeatherSeason.Spring
+var confirmedSeason = EnumsAndSwitch().checkWeatherSeason(currentSeason: currentSeason)
+
