@@ -551,6 +551,10 @@ var collatzNumber = 3
 var collatzConjectureSum = conditional.return3NPlus1SumOf(number: 43566)
 
 //Enums and Switch Statement.
+
+/**
+ Enumerations and switch statement are powerful tools in Swift. Enumerations provide a way to define a set of related values, and switch statement provides a way to match a specific value and perform an action based on the match. When used together, they can make the code more readable and expressive, by allowing you to express complex conditions
+ */
 internal class EnumsAndSwitch{
     
     //You can do a multi line enum declaration separated by commas.
@@ -612,3 +616,100 @@ var confirmedSeason = EnumsAndSwitch().checkWeatherSeason(currentSeason: current
 var todaysWeather = EnumsAndSwitch.Weather.Sunny(temperature: 27)
 var todaysWeatherStatus: String = EnumsAndSwitch().getTodaysWeatherDetails(todaysWeather: todaysWeather)
 print(todaysWeatherStatus)
+
+//Swift Protocols - Basically interfaces from other languages.
+//Naming conventions of protocols have suffixes "Delegate" and "DataSource"
+//
+
+internal protocol CarDataSource{
+    //For variable properties you have to specify whether it's a {get or set}
+    var carName: String { get set }
+    var carPrice: Int { get set }
+    var carState: String { get set }
+    
+    func drive()//These will change the car state to -> driving, stopped and parked.
+    func stop()
+    func park()
+    func getDriversName() -> String
+    
+    func isCar4WheelDrive() -> Bool
+    func isCarryingPassengers() -> Bool
+}
+
+class Car{
+    private var manufacturer: String
+    //public manufacturer setter and getter.
+    internal var carManufacturer: String{
+        get{
+            return manufacturer
+        }set{
+            manufacturer = newValue
+        }
+    }
+    
+    init(manufacturer: String){
+        self.manufacturer = manufacturer
+    }
+}
+
+//In this case Audi inherits from car and should follow the protocol(interface) of CarDataSource.
+class Audi: Car, CarDataSource{
+    
+    var carName: String
+    var carPrice: Int
+    var carState: String
+    private var carStateEnum: CarState = CarState.Parked(status: "Parked")
+    
+    private enum CarState{
+        case Parked(status: String)
+        case Driving(status: String)
+        case Stopped(status: String)
+    }
+    
+    init(){
+        self.carName = "Audi"
+        self.carPrice = 5000000
+        self.carState = "Parked"
+        super.init(manufacturer: "AUDI Motors")
+    }
+    
+    func drive(){
+        carState = "Driving"
+        carStateEnum = .Driving(status: carState)
+    }
+    
+    func stop(){
+        carState = "Stopped"
+        carStateEnum = .Stopped(status: carState)
+    }
+    
+    func park() {
+        carState = "Parked"
+        carStateEnum = .Parked(status: carState)
+    }
+    
+    func getDriversName() -> String {
+        return "Eric Mwenda"
+    }
+    
+    func isCar4WheelDrive() -> Bool {
+        return true
+    }
+    
+    func isCarryingPassengers() -> Bool{
+        return false
+    }
+    
+    internal func getAllCarDetails() -> String{
+        return "This car is \(carName) : Manufactured by \(carManufacturer) : Driver is \(getDriversName()) : Current Status is \(carStateEnum) | \(carState) : The car is 4 Wheel - \(isCar4WheelDrive()) : The car is carrying Passengers - \(isCarryingPassengers())"
+    }
+}
+
+var myCar = Audi()
+var myDriversName: String = myCar.getDriversName()
+var myCarsManufacturer = myCar.carManufacturer//Accessing the parent class.
+myCar.drive()
+myCar.park()
+myCar.carManufacturer = "Mercedes Benz"
+print(myCar.getAllCarDetails())
+
