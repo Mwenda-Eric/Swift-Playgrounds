@@ -17,8 +17,8 @@ class Person{
     var ericsConscious = InnerPerson()
     
     class InnerPerson{
-        static let innerCrush = "Special Case"
-        var innerLove = "Chest Pweins"
+        static let innerThought = "My Inner Thought."
+        var innerDecision = "My Inner Decision"
         var innerPasison: String = "Making Games"//Type inferencing used here.
     }
 }
@@ -29,9 +29,8 @@ var firstName = Person.firstName
 let favoriteSong = eric.favoriteSong
 let favoriteMeal = Person().favoriteMeal
 
-var ericsCrush = Person.InnerPerson.innerCrush
-var ericsLove = eric.ericsConscious.innerLove
-ericsCrush = "Her"
+var myInnerThought: String = Person.InnerPerson.innerThought
+var myInnerDecision: String = eric.ericsConscious.innerDecision
 
 //Types --> Actual variable type that you are assigning.
 
@@ -456,6 +455,7 @@ class Conditionals{
         }
     }
     
+    //Swift switch cases have to be exhausive for all conditions. If not. Have a default.
     internal func getGradeWithMarksSwitch(_ marks: Int) -> Character{
         switch marks{
         case 0..<40:
@@ -722,3 +722,58 @@ myCar.park()
 myCar.carManufacturer = "Mercedes Benz"
 print(myCar.getAllCarDetails())
 
+//Weak And Strong Variables.
+/**
+ When we declare a variable in swift without specifying, it's by default a strong variable.
+ 'weak' -> may only be applied to class and class-bound protocol types not primitives-I guess.
+                you should use weak when refernecing instances.
+ 'weak' -> may only be used on 'var' declarations
+ */
+internal class WeakAndStrongObjects{
+    var outerPerson: String?
+    
+    internal class Person{
+        var personName: String?
+        weak var personsPet: Pet?
+    }
+    
+    internal class Pet: Person{
+        var petName: String?
+        var petAge: Int?
+        
+        func initialize(petName: String, petAge: Int){
+            self.petName = petName
+            self.petAge = petAge
+        }
+        
+        func feedPet(){
+            guard let petsName = petName else{ return }
+            print("\(petsName) is Feeding!")
+        }
+        
+        func renamePet(_ newPetsName: String){
+            petName = newPetsName
+        }
+        
+        func getPetDetails() -> String{
+            guard let petsName = petName, let petsAge = petAge, let ownerName = personName else{ return "Not all Details Set!" }
+            return "This Pet Is Called '\(petsName)' : Which is '\(petsAge)' years old and the owner is '\(ownerName)'"
+        }
+    }
+}
+
+var person = WeakAndStrongObjects.Person()
+person.personName = "Eric Mwenda"
+var petHolder: String? = person.personName
+
+var personsPet = WeakAndStrongObjects.Pet()
+personsPet.personName = "Eric Mwenda"
+personsPet.petName = "Cat"
+var myCatsName = personsPet.petName
+personsPet.petAge = 12
+var myCatsAge = personsPet.petAge
+
+personsPet.initialize(petName: "Catalissa", petAge:34)
+
+var petDetails = personsPet.getPetDetails()
+print(petDetails)
