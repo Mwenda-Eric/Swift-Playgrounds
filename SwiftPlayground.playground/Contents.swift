@@ -580,8 +580,35 @@ internal class EnumsAndSwitch{
             return .Winter
         }
     }
+    
+    //Associating values with enum cases.
+    internal enum Weather{
+        case Sunny(temperature: Int)
+        case Cloudy(cloudCover: Double)
+        case Rainy(precipitation: String)
+        case Snowy(snowDepth: Float)
+    }
+    
+    internal func getTodaysWeatherDetails(todaysWeather: Weather) -> String{
+        switch todaysWeather{
+        case .Sunny(let temperature):
+            return "It's Sunny Today with a Temperature of : \(temperature)"
+            
+        case .Cloudy(let cloudCover):
+            return "It's Cloudy Today with a Cloud Cover of : \(cloudCover)"
+            
+        case .Rainy(let precipitation):
+            return "It's Rainy Today with a Precipitation of : \(precipitation)"
+            
+        case .Snowy(let snowDepth):
+            return "It's Snowy Today with a Snow Depth of : \(snowDepth)"
+        }
+    }
 }
 
 var currentSeason: EnumsAndSwitch.WeatherSeason = EnumsAndSwitch.WeatherSeason.Spring
 var confirmedSeason = EnumsAndSwitch().checkWeatherSeason(currentSeason: currentSeason)
 
+var todaysWeather = EnumsAndSwitch.Weather.Sunny(temperature: 27)
+var todaysWeatherStatus: String = EnumsAndSwitch().getTodaysWeatherDetails(todaysWeather: todaysWeather)
+print(todaysWeatherStatus)
