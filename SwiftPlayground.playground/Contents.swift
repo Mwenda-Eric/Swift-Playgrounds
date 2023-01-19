@@ -9,7 +9,7 @@ var secondNumber = 654 //Var can be assigned to any type of variable, is mutable
 let total = firstNumber + secondNumber
 
 class Person{
-    static let age = 24
+    static let age = 99
     static let firstName = "Eric"
     var lastName = "Mwenda"
     var favoriteSong = "Banners - Where The Shadow Ends!"
@@ -41,8 +41,8 @@ class Eric{
     static let myFirstName: String = "Eric"
     var myLastName: String = "Mwenda"
     static let isAdult: Bool = true
-    var dreamSalary: Double = 450000004343934.3454
-    var mpesaBalance: Float = 00.00
+    var salary: Double = 450000004343934.3454
+    var mpesaBalance: Float = 343493849.004332382
 }
 
 var me: Eric = Eric()//Overall object to reference the non static variables.
@@ -52,7 +52,7 @@ var myIdNumber = me.myIdNumber
 var myFirstName = Eric.myFirstName
 var myLastName = me.myLastName
 var amIAnAdult: Bool = Eric.isAdult
-var myDreamSalary: Double = me.dreamSalary
+var mySalary: Double = me.salary
 var myMpesaBalance: Float = me.mpesaBalance
 
 var myFirstAndLastNames = myFirstName + " " + myLastName
@@ -147,6 +147,7 @@ class RecordLabel{
     private var numberOfRegisteredArtists: Int = 0
     var annualRevenue: Double = 0
     
+    //Get and set property.
     var registeredArtists: Int{
         get{
             return numberOfRegisteredArtists
