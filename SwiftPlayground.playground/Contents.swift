@@ -617,11 +617,20 @@ var todaysWeather = EnumsAndSwitch.Weather.Sunny(temperature: 27)
 var todaysWeatherStatus: String = EnumsAndSwitch().getTodaysWeatherDetails(todaysWeather: todaysWeather)
 print(todaysWeatherStatus)
 
+/**
+ In Swift, a protocol is a blueprint for a group of methods, properties, and other requirements that a class, struct, or enumeration must conform to. Protocols define a set of rules that a type must follow, but they don't provide any implementation for those rules.
+ 
+ Protocols also can inherit from one another, protocol can inherit from one or more other protocols. This allows you to define a protocol in terms of other protocols, and can provide a way to reuse functionality across multiple protocols.
+ */
 //Swift Protocols - Basically interfaces from other languages.
 //Naming conventions of protocols have suffixes "Delegate" and "DataSource"
-//
 
 internal protocol CarDataSource{
+    /**
+     A class, struct, or enumeration that conforms to this protocol must implement these requirements.
+     Protocols can also have optional requirements, which are marked with the optional keyword, this means that conforming types are not required to implement these requirements.
+     */
+    
     //For variable properties you have to specify whether it's a {get or set}
     var carName: String { get set }
     var carPrice: Int { get set }
