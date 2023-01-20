@@ -317,6 +317,8 @@ class Looping{
     
     func returnKthSmallestNumberLibrary(array: [Int], kthNumber: Int) -> Int{
         return array.sorted(by: <)[kthNumber - 1]
+        var myString: String = ""
+        var myInt: Int = 0
         //var sortedArray = array.sorted(by: <)
         //return sortedArray[kthNumber]
     }
