@@ -803,19 +803,71 @@ internal class Closure{
     
     //Closures can also be passed in as arguments in other functions.
     //Here's an example.
+    /**
+     the values of the parameters a and b in the closure passed to the sortArray function come from the elements of the array passed as the first argument to the function.
+
+     The sortArray function takes two arguments, an array of integers array and a closure sort.
+     The closure takes two integers as arguments, a and b and returns a boolean indicating whether a should be sorted before b or not.
+
+     The sortArray function then calls the sorted(by:) method on the input array, passing the closure as an argument to it.
+
+     When sorted(by:) method is called, it compares the elements in the array using the closure, in this case,
+     the closure compares two integers passed to it (a and b) and returns true if a is less than b, false otherwise.
+     This is how the array passed to the function is sorted.
+
+     It's important to note that, the closure's parameters and return type are inferred from the function's signature,
+     which is passed as an argument to the sortArray function.
+
+     In the example, the closure is defined inline with the function call, but it can also be defined as a separate variable,
+     this way it can be reused and passed to multiple functions.
+     */
     func sortNumbers(_ array: [Int], _ sortLambda: (Int, Int) -> Bool ) -> [Int]{
         return array.sorted(by: sortLambda)
     }
     
     var sortDescending: (Int, Int) -> Bool = {a, b in
-        return a < b
-    }
-    
-    var sortAscending: (Int, Int) -> Bool = {(a: Int, b: Int) -> Bool in//you can just say 'a,b in'
         return a > b
     }
     
-    var myArray = [4344,454,3,54,34,23,5,3,5434,45,3,43]
+    var sortAscending: (Int, Int) -> Bool = {(a: Int, b: Int) -> Bool in//you can just say 'a,b in'
+        return a < b
+    }
+    
+    var myArray = [4,454,3,54,34,23,5,3,5434,45,3,43]
+    
+    /**
+     here's an example of a function called filterArray that takes an array of integers and a closure as parameters,
+     and returns a new array containing only the elements that pass a certain test defined by the closure:
+     */
+    
+    func filterArray(_ array:[Int], _ filter: (Int) -> Bool) -> [Int]{
+        return array.filter(filter)
+        //The filter(_:) method calls the closure for each element in the array, passing the element as a parameter to the closure.
+        //If the closure returns true for an element, it's included in the filtered array, otherwise it's excluded.
+    }
+    
+    /**
+     The filter(_:) method calls the closure for each element in the array, passing the element as a parameter to the closure.
+     If the closure returns true for an element, it's included in the filtered array, otherwise it's excluded.
+     In this example, the closure checks if the element passed to it is even or not, by checking if the remainder of dividing the number by 2 is equal to 0.
+     If it's true, the number is even and is included in the filtered array, otherwise it's excluded.
+
+     This way, the filterArray function can be used to filter any array of integers based on a certain test defined by the closure passed as an argument.
+
+     It's important to note that, in this example, the closure's parameters and return type are inferred from the function's signature,
+     which is passed as an argument to the filterArray function.
+     */
+    var filterLambdaEven: (Int) -> Bool = { filterNumber in
+        if filterNumber % 2 == 0{
+            return true
+        }
+        return false
+    }
+    
+    var filterLambdaOdd: (Int) -> Bool = { (filterNumber: Int) -> Bool in // Filter number comes from the array.filter()
+        //the array.filter() function passes every number of the array to this function. then adds it to the new array if its odd.
+        return filterNumber % 2 != 0
+    }
     
 }
 
@@ -833,3 +885,7 @@ isNumberGreaterThanTenAndEven = isGreaterAndEvenLambda(44)
 
 var sortedAscending = closure.sortNumbers(closure.myArray, closure.sortAscending)
 var sortedDescending = closure.sortNumbers(closure.myArray, closure.sortDescending)
+
+var filteredArrayEven = closure.filterArray(closure.myArray, closure.filterLambdaEven)
+var filteredArrayOdd = closure.filterArray(closure.myArray, closure.filterLambdaOdd)
+
