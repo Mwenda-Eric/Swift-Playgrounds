@@ -779,3 +779,57 @@ personsPet.initialize(petName: "Catalissa", petAge:34)
 
 var petDetails = personsPet.getPetDetails()
 print(petDetails)
+
+//Swift Closures - Basically Lambda Expressions.
+//This is basically storing a funtion in a varible.
+//This allows you to carry a function around the program as you would to a variable.
+internal class Closure{
+    
+    func isNumberGreaterThanTenAndEven(_ number: Int) -> Bool{
+        return number >= 10 && number % 2 == 0
+    }
+    
+    //Writing the function as a closure.
+    var isGreaterAndEvenLambda: (Int) -> Bool = { number in
+        if number >= 10 && number % 2 == 0{
+            return true
+        }
+        return false
+    }
+    
+    var addTwoNumbers: (Int, Int) -> Int = {(firstNumber: Int, secondNumber: Int) -> Int in
+        return firstNumber + secondNumber
+    }
+    
+    //Closures can also be passed in as arguments in other functions.
+    //Here's an example.
+    func sortNumbers(_ array: [Int], _ sortLambda: (Int, Int) -> Bool ) -> [Int]{
+        return array.sorted(by: sortLambda)
+    }
+    
+    var sortDescending: (Int, Int) -> Bool = {a, b in
+        return a < b
+    }
+    
+    var sortAscending: (Int, Int) -> Bool = {(a: Int, b: Int) -> Bool in//you can just say 'a,b in'
+        return a > b
+    }
+    
+    var myArray = [4344,454,3,54,34,23,5,3,5434,45,3,43]
+    
+}
+
+let closure = Closure()
+type(of: closure.isGreaterAndEvenLambda)
+type(of: closure.addTwoNumbers)
+
+let isGreaterAndEvenLambda: (Int) -> Bool = closure.isGreaterAndEvenLambda
+var addFunction: (Int, Int) -> Int = Closure().addTwoNumbers
+var lambdaSum: Int = addFunction(4344, 5453)
+
+var isNumberGreaterThanTenAndEven = isGreaterAndEvenLambda(43)
+isNumberGreaterThanTenAndEven = isGreaterAndEvenLambda(4)
+isNumberGreaterThanTenAndEven = isGreaterAndEvenLambda(44)
+
+var sortedAscending = closure.sortNumbers(closure.myArray, closure.sortAscending)
+var sortedDescending = closure.sortNumbers(closure.myArray, closure.sortDescending)
