@@ -35,7 +35,7 @@ var myInnerDecision: String = eric.ericsConscious.innerDecision
 //Types --> Actual variable type that you are assigning.
 
 /**
- Difference between Float and Double.
+ Key Differences between Float and Double.
  In Swift, both Double and Float are used to represent decimal numbers, but there are some key differences between them:
 
  Precision: Double has a higher precision than Float. A Double can represent decimal numbers with up to 15-17 decimal digits of precision,
