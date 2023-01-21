@@ -889,3 +889,62 @@ var sortedDescending = closure.sortNumbers(closure.myArray, closure.sortDescendi
 var filteredArrayEven = closure.filterArray(closure.myArray, closure.filterLambdaEven)
 var filteredArrayOdd = closure.filterArray(closure.myArray, closure.filterLambdaOdd)
 
+//String Interpolation and string operation in swift.
+
+private class Strings{
+    internal var firstName: String
+    internal var secondName: String
+    internal var stringArray: [String]
+    var stringPrinter: StringPrinter
+    
+    init(firstName: String, secondName: String){
+        self.firstName = firstName
+        self.secondName = secondName
+        self.stringArray = [firstName, secondName]
+        
+        stringPrinter = StringPrinter(stringArray: stringArray)
+    }
+    
+    internal class StringPrinter{
+        private var stringArray: [String]
+        
+        init(stringArray: [String]){
+            self.stringArray = stringArray
+        }
+        
+        func PrintStrings(){
+            for string in stringArray {
+                print(string)
+            }
+        }
+        
+        //use String interpolation.
+        func returnMyNames() -> String{
+            return "My Name is '\(stringArray[0]) \(stringArray[1])'."
+        }
+    }
+    
+    internal class StringOperation{
+        
+        //String.count -> to return the number of characters in the string.
+        func getNumberOfCharactersInTheString(string: String) -> Int{
+            return string.count
+        }
+        
+        //Substrings: You can use the substring(from:), substring(to:) and substring(with:) methods
+        //to extract substrings from a string:
+        func returnSubstringToCharacter(character: Character, myString: String) -> String{
+            guard let index = myString.firstIndex(of: character) else {return "No Character Found."}
+            
+            let substring = myString[..<index]
+            return String(substring)
+        }
+    }
+}
+
+private var printMyNames: () = Strings(firstName: "Gakenia", secondName: "Eric").stringPrinter.PrintStrings()
+private var myIntro = Strings(firstName: "Eric", secondName: "Mwenda").stringPrinter.returnMyNames()
+
+var substringToFirstQ = Strings.StringOperation()
+    .returnSubstringToCharacter(character: "Q", myString: "I'm Eric WIth a Queen Her Name is Queen DM")
+print(substringToFirstQ)
