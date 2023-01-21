@@ -982,7 +982,22 @@ internal class DictionaryArrays{
     
     //Decalare an Any Type Array.
     //This can comprise of various data types.
+    /**
+     t's important to note that, when working with arrays of type [Any], you need to be careful about the types of elements you are adding to the array,
+     and you need to check the types before using them.
+     This is because the array can store elements of any type, so you need to make sure that you are handling them correctly.
+
+     Also, arrays of type [Any] are less type-safe than arrays of specific types.
+     For example, if you have an array of type [Int],
+     you can be sure that the array will only contain integers and you can perform integer-specific operations on its elements.
+     On the other hand, with an array of type [Any], you need to check the type of each element before performing any operations on it.
+
+     In general, it's recommended to use arrays of specific types instead of arrays of type [Any] whenever possible,
+     because they are safer and more efficient. However, arrays of type [Any] can be useful in certain situations
+     where you need to store elements of different types in the same array.
+     */
     var anyArray: [Any] = [true, 1, "What The F", 343.44, [43,34,34], ["This", "is", "Cool"], "X", 43]
+
     
     //Dictionary; -> Contains a value and key. Very efficient when accessing elements.
     var artistSalesDictionary: [String: Int] = ["Ed Sheeran": 4334, "Shawn Mendes": 54344, "Taylor Swift": 34345]
@@ -1004,6 +1019,10 @@ internal class DictionaryArrays{
             print(anyValue)
         }
     }
+    
+    func addAnyElementToArray(newElement: Any){
+        anyArray.append(newElement)
+    }
 }
 
 var dictionaryArrays: DictionaryArrays = DictionaryArrays()
@@ -1011,3 +1030,10 @@ print("Values of Any Array are:")
 dictionaryArrays.printAnyValueArray(anyValue: dictionaryArrays.anyArray)
 print("Values of Artists Dictionary are:")
 dictionaryArrays.printDictionaryValues(dictionary: dictionaryArrays.artistSalesDictionary)
+dictionaryArrays.addAnyElementToArray(newElement: "This is so damn Amazing. I have no idea. This looks like an ArrayList.")
+dictionaryArrays.addAnyElementToArray(newElement: 43434)
+dictionaryArrays.addAnyElementToArray(newElement: false)
+dictionaryArrays.addAnyElementToArray(newElement: [1:"Eric", 2:"Mwenda", 3:"Gakenia"])
+print("New Elements of Any Array Are:")
+dictionaryArrays.printAnyValueArray(anyValue: dictionaryArrays.anyArray)
+
