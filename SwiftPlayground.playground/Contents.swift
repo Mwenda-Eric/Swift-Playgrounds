@@ -955,7 +955,7 @@ private class Strings{
         //Splitting: You can use the components(separatedBy:) method
         //to split a string into an array of substrings based on a separator
         func returnArraySeparatedBy(originalString: String, separatorCharacterSet: CharacterSet) -> [String]{
-            var splitStrings: [String] = originalString.components(separatedBy: separatorCharacter)
+            var splitStrings: [String] = originalString.components(separatedBy: separatorCharacterSet)
             return splitStrings
         }
 
@@ -971,3 +971,43 @@ private var myIntro = Strings(firstName: "Eric", secondName: "Mwenda").stringPri
 var substringToFirstQ = Strings.StringOperation()
     .returnSubstringToCharacter(character: "Q", myString: "I'm Eric WIth a Queen Her Name is Queen DM")
 print(substringToFirstQ)
+
+//Dictionaries and Arrays.
+
+internal class DictionaryArrays{
+    
+    //Declare an int Array;
+    //it's only made up of int values.
+    var intAraay: [Int] = [43,543,4,544,34,45,4,45,34,54,3]
+    
+    //Decalare an Any Type Array.
+    //This can comprise of various data types.
+    var anyArray: [Any] = [true, 1, "What The F", 343.44, [43,34,34], ["This", "is", "Cool"], "X", 43]
+    
+    //Dictionary; -> Contains a value and key. Very efficient when accessing elements.
+    var artistSalesDictionary: [String: Int] = ["Ed Sheeran": 4334, "Shawn Mendes": 54344, "Taylor Swift": 34345]
+    
+    func printDictionaryValues(dictionary: [String: Int]){
+        //Use for in loop to print. Output = (Key="Ed Sheeran", Value = 4334)
+        for artistDictionary in dictionary{
+            print(artistDictionary)
+        }
+        print()
+        //specify key and value in the for loop declaration.
+        for (artistName, artistSales) in dictionary{
+            print("\(artistName) Has Sold : \(artistSales) Copies")
+        }
+    }
+    
+    func printAnyValueArray(anyValue: [Any]){
+        for anyValue in anyArray{
+            print(anyValue)
+        }
+    }
+}
+
+var dictionaryArrays: DictionaryArrays = DictionaryArrays()
+print("Values of Any Array are:")
+dictionaryArrays.printAnyValueArray(anyValue: dictionaryArrays.anyArray)
+print("Values of Artists Dictionary are:")
+dictionaryArrays.printDictionaryValues(dictionary: dictionaryArrays.artistSalesDictionary)
