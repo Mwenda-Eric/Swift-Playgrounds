@@ -34,14 +34,41 @@ var myInnerDecision: String = eric.ericsConscious.innerDecision
 
 //Types --> Actual variable type that you are assigning.
 
+/**
+ Difference between Float and Double.
+ In Swift, both Double and Float are used to represent decimal numbers, but there are some key differences between them:
+
+ Precision: Double has a higher precision than Float. A Double can represent decimal numbers with up to 15-17 decimal digits of precision,
+ while a Float can represent decimal numbers with up to 6-9 decimal digits of precision.
+ This means that a Double can represent a larger range of decimal numbers with more accuracy.
+
+ Size: Double requires more memory than Float. A Double uses 8 bytes of memory to store a value, while a Float uses 4 bytes.
+ This means that if you have a large number of decimal numbers to store and memory is a concern, you may want to use Float instead of Double.
+
+ Range: The range of values that can be represented by a Double is greater than the range of values that can be represented by a Float.
+ A Double can represent values from approximately -1.8 x 10^308 to 1.8 x 10^308,
+ while a Float can represent values from approximately -3.4 x 10^38 to 3.4 x 10^38.
+
+ Performance: In general, operations on Float values are faster than operations on Double values,
+ because Float requires less memory. However, the difference in performance is usually not significant
+ unless you are performing a large number of operations.
+
+ In general, if you need high precision and a large range of values, you should use Double.
+ If memory is a concern and the precision is not critical, you should use Float.
+
+ It's worth noting that, when working with decimal numbers,
+ it's always a good practice to be explicit about the type you are using,
+ because Double is the default type for decimal numbers in Swift.
+ */
+
 class Eric{
     static let myAge: Int = 99
     let myIdNumber: Int = 1111111111
     static let myFirstName: String = "Eric"
     var myLastName: String = "Mwenda"
     static let isAdult: Bool = true
-    var salary: Double = 450000004343934.3454
-    var mpesaBalance: Float = 343493849.004332382
+    var salary: Double = 45003943334.3432354
+    var mpesaBalance: Float = 343449.79123
 }
 
 var me: Eric = Eric()//Overall object to reference the non static variables.
@@ -51,6 +78,19 @@ var myIdNumber = me.myIdNumber
 var myFirstName = Eric.myFirstName
 var myLastName = me.myLastName
 var amIAnAdult: Bool = Eric.isAdult
+
+/**
+ When you print a float variable in Swift, it is formatted by default to display 1 decimal place.
+ If you want to display more decimal places, you can use the String(format:) initializer
+ and specify the number of decimal places you want to display,
+ */
+var mpesaBalanceAllDecimalPlaces: Float = 0.0
+if let mpesaBalanceUnwrapped = Float(String(format: "%.9f", me.mpesaBalance)){
+    mpesaBalanceAllDecimalPlaces = mpesaBalanceUnwrapped
+}
+print("Mpesa Balance 9 Decimal Places = \(String(format: "%.9f", mpesaBalanceAllDecimalPlaces))")
+print(me.mpesaBalance)
+
 var mySalary: Double = me.salary
 var myMpesaBalance: Float = me.mpesaBalance
 
@@ -317,8 +357,7 @@ class Looping{
     
     func returnKthSmallestNumberLibrary(array: [Int], kthNumber: Int) -> Int{
         return array.sorted(by: <)[kthNumber - 1]
-        var myString: String = ""
-        var myInt: Int = 0
+    
         //var sortedArray = array.sorted(by: <)
         //return sortedArray[kthNumber]
     }
@@ -1036,4 +1075,3 @@ dictionaryArrays.addAnyElementToArray(newElement: false)
 dictionaryArrays.addAnyElementToArray(newElement: [1:"Eric", 2:"Mwenda", 3:"Gakenia"])
 print("New Elements of Any Array Are:")
 dictionaryArrays.printAnyValueArray(anyValue: dictionaryArrays.anyArray)
-
