@@ -939,7 +939,30 @@ private class Strings{
             let substring = myString[..<index]
             return String(substring)
         }
+        
+        //Comparison: You can use the ==, <, >, <=, and >= operators to compare strings for equality, like this:
+        func compareTwoString(string1: String, string2: String) -> Bool{
+            return string1 == string2
+        }
+        
+        //Replacing: You can use the replacingOccurrences(of:with:) method
+        //to replace occurrences of a substring with another substring,
+        func replaceFirstStringWithSecond(firstString: String, secondString: String, sentence: String) -> String{
+            var newString: String = sentence.replacingOccurrences(of: firstString, with: secondString)
+            return newString
+        }
+        
+        //Splitting: You can use the components(separatedBy:) method
+        //to split a string into an array of substrings based on a separator
+        func returnArraySeparatedBy(originalString: String, separatorCharacterSet: CharacterSet) -> [String]{
+            var splitStrings: [String] = originalString.components(separatedBy: separatorCharacter)
+            return splitStrings
+        }
+
     }
+    
+    //EXTEND MORE ON SWIFT string operations.
+    
 }
 
 private var printMyNames: () = Strings(firstName: "Gakenia", secondName: "Eric").stringPrinter.PrintStrings()
