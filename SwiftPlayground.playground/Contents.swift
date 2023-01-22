@@ -1081,3 +1081,59 @@ dictionaryArrays.printAnyValueArray(anyValue: dictionaryArrays.anyArray)
 //Libraries and Frameworks -> External sources that we import to our application.
 var myButton: UIButton = UIButton()//From UIKit.
 //To Go to any definition of a function/class or framework you command and click.
+
+//Naming conventions in swift.
+
+/**
+ camelCase -> First letter is small letter and any consecutive word forming starts with a capital letter.
+    -used in variable names.
+    -used in function names.
+ 
+ snake_case -> Words are separated by an underscore. -> can be used in variable and function names too.
+ 
+ PascalCase -> The First Letter is capital -> Consecutive word forming starts with a capital letter too.
+    -used in Class Names.
+    -used in Struct Names.
+    -used in Protocl Names.
+ 
+ Variable and constant names: Variable and constant names should start with a lowercase letter and use camel case
+ (e.g. myVariable, myConstant)
+
+ Function and method names: Function and method names should start with a lowercase letter and use camel case
+ (e.g. myFunction(), myMethod()). For methods of a class, use the verbNoun format.
+
+ Type names: Type names (e.g. structs, enums, classes) should start with a uppercase letter and use Pascal case
+ (e.g. MyType, MyClass)
+
+ Enum cases: Enum cases should start with a lowercase letter and use camel case
+ (e.g. myCase, anotherCase)
+
+ Boolean variable: Boolean variable should be named as a question or a statement,
+ starting with is, has, should... (e.g. isValid, hasData)
+
+ Properties and computed properties:
+ Properties and computed properties should start with a lowercase letter and use camel case,
+ and should avoid using prefixes like get or set (e.g. myProperty, myComputedProperty)
+
+ Protocols: Protocol names should start with a uppercase letter and use Pascal case
+ (e.g. MyProtocol, AnotherProtocol)
+
+ Closures: Closure parameter names should be short, and start with a name that describes their role
+ (e.g. data, error, completion)
+ Closure names should start with a lowercase letter and use camel case
+ (e.g. myClosure)
+ Closure parameters names should be short, and start with a name that describes their role
+ (e.g. data, error, completion)
+ Closure parameter types should be explicit, and if possible, use the type inference
+ Closure return type should be explicit, if the closure has a return statement,
+ otherwise it could be ommitted or use Void
+
+ Spacing: Swift code should use 4 spaces for indentation
+ and there should be a space between the keyword and the opening parenthesis of a function or method
+ (e.g. func myFunction())
+
+ Comments: Comment should be added to the code to explain complex logic, algorithms,
+ or to give an overview of the code.
+ Comments should be written in a clear and concise language, and they should be aligned with the code they describe.
+ */
+
