@@ -1,5 +1,7 @@
-import UIKit
+//When writing import statements. It's advisable to name order them alphabetically.
+//For easier traction when they become plenty.
 import Foundation
+import UIKit
 
 //Variable Constant and Static
 
@@ -1075,3 +1077,7 @@ dictionaryArrays.addAnyElementToArray(newElement: false)
 dictionaryArrays.addAnyElementToArray(newElement: [1:"Eric", 2:"Mwenda", 3:"Gakenia"])
 print("New Elements of Any Array Are:")
 dictionaryArrays.printAnyValueArray(anyValue: dictionaryArrays.anyArray)
+
+//Libraries and Frameworks -> External sources that we import to our application.
+var myButton: UIButton = UIButton()//From UIKit.
+//To Go to any definition of a function/class or framework you command and click.
