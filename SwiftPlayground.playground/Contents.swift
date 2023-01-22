@@ -1137,3 +1137,78 @@ var myButton: UIButton = UIButton()//From UIKit.
  Comments should be written in a clear and concise language, and they should be aligned with the code they describe.
  */
 
+//Type Aliases in Swift.
+class TypeAlias{
+    
+    //For this closure we can use a type alias to represent the number returned as a Square type.
+    typealias SquareNumber = Int
+    typealias SquareClosure = (SquareNumber) -> SquareNumber//type alias for a closure.
+    
+    var mySquareClosure: (Int) -> SquareNumber = { number in
+        return number * number
+    }
+    
+    var doubleClosure: SquareClosure = { number in
+        return number * 2
+    }
+    
+    //Type aliases can come in handy in complex data structures such as dictionaries.
+    //An Example that doesn't use type aliasing with a dictionary.
+    var artistNameAndAge: [String : Int] = [:]//This is an empty dictionary literal.
+    
+    init(){
+        artistNameAndAge = ["Ed Sheeran": 34, "Taylor Swift": 32, "Selena Gomez": 29, "Shawn Mendes": 27]
+    }
+    
+    func printArtistData(artistNameAndAge: [String : Int]) -> Void{
+        
+        for (artistName, artistAge) in artistNameAndAge{
+            print("\(artistName) is \(artistAge) years old.")
+        }
+    }
+    
+    //Using Type aliasing for the above.
+    typealias ArtistData = [String : Int]
+    func printArtistDataAlias(artistNameAndAge: ArtistData){
+        for(artistName, artistAge) in artistNameAndAge{
+            print("\(artistName) is \(artistAge) years old.")
+        }
+    }
+    
+    //Type aliases are normally put before the variables that define it.
+    typealias CodeCheckAlias = (String, Int) -> Bool
+
+    var checkCodeClosure: CodeCheckAlias = {(codeName:String, codeNumber: Int) in
+        switch(codeName){
+        case "WON"://if the case is won and code Number is even: return true.
+            if(codeNumber % 2 == 0){
+                return true
+            }
+            return false
+        case "PROMO"://if the case is promo and code number is greater than 100 return true.
+            return codeNumber > 1000
+        default:
+            return false
+        }
+    }
+    
+    
+    func isCodeValid(codeName: String, codeNumber: Int) -> Bool{
+        
+        //use the values passed in as parameters to call the check code closure.
+        return checkCodeClosure(codeName, codeNumber)
+    }
+    
+}
+
+var squareNumber = TypeAlias().mySquareClosure
+type(of: squareNumber)
+squareNumber(3443)
+var doubleNumber: Int = TypeAlias().doubleClosure(45)
+
+TypeAlias().printArtistData(artistNameAndAge: TypeAlias().artistNameAndAge)
+
+var isCodeValid1: Bool = TypeAlias().isCodeValid(codeName: "MyCard", codeNumber: 4343)
+var isCodeValid2: Bool = TypeAlias().isCodeValid(codeName: "WON", codeNumber: 4343)
+var isCodeValid3: Bool = TypeAlias().isCodeValid(codeName: "WON", codeNumber: 4342)
+var isCodeValid4: Bool = TypeAlias().isCodeValid(codeName: "PROMO", codeNumber: 4342)
