@@ -1477,7 +1477,32 @@ class SearchingAndSorting{
         }
     }
     
+    // Quick sort (time Complexity
+    //-> Best case = 0(nlogn)
+    //-> Average case = 0(nlogn)
+    //-> Worst case = 0(n^2) -> When the pivot is always the smallest or largest element.
+            //To counter this you can be choosing a random index as the pivot.
     
+    func quickSort(_ array: inout [Int], low: Int, high: Int) {
+        if low < high {
+            let pivot = partition(&array, low: low, high: high)
+            quickSort(&array, low: low, high: pivot)
+            quickSort(&array, low: pivot + 1, high: high)
+        }
+    }
+
+    func partition(_ array: inout [Int], low: Int, high: Int) -> Int {
+        let pivot = array[high]
+        var i = low - 1
+        for j in low..<high {
+            if array[j] <= pivot {
+                i += 1
+                array.swapAt(i, j)
+            }
+        }
+        array.swapAt(i + 1, high)
+        return i + 1
+    }
 }
 
 var numberArray = [45454, 544,34,34,54,2,464,54656,35,4,3,655,45,4,344,65,4556]
