@@ -1282,7 +1282,7 @@ class MathFunctions{
     
     //ceil() function: This function is used to round a decimal number up to the nearest whole number.
     //For example, ceil(3.14) returns 4.
-    static func roundUpNumber(number: Int) -> Double{
+    static func roundUpNumber(number: Double) -> Double{
         return ceil(Double(number))
     }
     
@@ -1303,3 +1303,7 @@ var powerNumber = MathFunctions.powerOfNumberBy(number: 34, power: 5)
 var powerConfirmation = 34*34*34*34*34
 
 var maxNumber = MathFunctions.largestNumberIn(431, 5455, 54)
+var roundDownNumber = MathFunctions.roundDownNumber(number: 4343.9)//4343
+var roundUpNumber = MathFunctions.roundUpNumber(number: 4343.9)//4344
+var roundToNearestWholeNumber = MathFunctions.roundToNearestWholeNumber(number: 4343.9)//4344
+var squareRoot = MathFunctions.squareRootOf(number: 434.3447)//20.84093807869502
