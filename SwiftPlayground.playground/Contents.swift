@@ -1240,32 +1240,9 @@ class MathFunctions{
 
      / operator: This operator is used for division. For example, 8 / 2 returns 4.
 
-     % operator: This operator is used for finding the remainder of a division. For example, 8 % 3 returns 2.
-
-     sqrt() function: This function is used to find the square root of a number.
-     For example, sqrt(16) returns 4.
-
-     pow() function: This function is used to find the power of a number.
-     For example, pow(2,3) returns 8.
-
-     abs() function: This function is used to find the absolute value of a number.
-     For example, abs(-5) returns 5.
-
-     round() function: This function is used to round a decimal number to the nearest whole number.
-     For example, round(3.14) returns 3.
-
-     floor() function: This function is used to round a decimal number down to the nearest whole number.
-     For example, floor(3.14) returns 3.
-
-     ceil() function: This function is used to round a decimal number up to the nearest whole number.
-     For example, ceil(3.14) returns 4.
-
-     max() function: This function is used to find the maximum value of two or more numbers.
-     For example, max(5, 10, 3) returns 10.
-
-     min() function: This function is used to find the minimum value of two or more numbers.
-     For example, min(5, 10, 3) returns 3.
-
+     % operator: This operator is used for finding the remainder of a division.
+     For example, 8 % 3 returns 2.
+     
      These are just some examples of math functions in Swift, and there are many more functions available in the Swift standard library
      and in external libraries that can be used for more advanced mathematical operations.
 
@@ -1273,20 +1250,52 @@ class MathFunctions{
      and you should consider using the Decimal type, which provides more precision than Float or Double
      */
     
+    //pow() function: This function is used to find the power of a number.
+    //For example, pow(2,3) returns 8.
     static func powerOfNumberBy(number: Double, power: Int) -> Double{
         return pow(number, Double(power))
     }
     
+    //abs() function: This function is used to find the absolute value of a number.
+    //For example, abs(-5) returns 5.
     static func absoluteValueOf(number: Int) -> Int{
         return abs(number)
     }
     
+    //sqrt() function: This function is used to find the square root of a number.
+    //For example, sqrt(16) returns 4.
     static func squareRootOf(number: Double) -> Double{
         return sqrt(number)
     }
     
+    //max() function: This function is used to find the maximum value of two or more numbers.
+    //For example, max(5, 10, 3) returns 10.
     static func largestNumberIn(_ firstNumber: Int, _ secondNumber: Int, _ thirdNumber: Int) -> Int{
         return max(firstNumber, secondNumber, thirdNumber)
+    }
+    
+    //min() function: This function is used to find the minimum value of two or more numbers.
+    //For example, min(5, 10, 3) returns 3.
+    static func smallestNumberIn(_ firstNumber: Int, _ secondNumber: Int, _ thirdNumber: Int) -> Int{
+        return min(firstNumber, secondNumber, thirdNumber)
+    }
+    
+    //ceil() function: This function is used to round a decimal number up to the nearest whole number.
+    //For example, ceil(3.14) returns 4.
+    static func roundUpNumber(number: Int) -> Double{
+        return ceil(Double(number))
+    }
+    
+    //round() function: This function is used to round a decimal number to the nearest whole number.
+    //For example, round(3.14) returns 3.
+    static func roundToNearestWholeNumber(number: Double) -> Double{
+        return round(number)
+    }
+    
+    //floor() function: This function is used to round a decimal number down to the nearest whole number.
+    //For example, floor(3.14) returns 3.
+    static func roundDownNumber(number: Double) -> Double{
+        return floor(number)
     }
 }
 
