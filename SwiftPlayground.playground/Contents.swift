@@ -1463,6 +1463,21 @@ class SearchingAndSorting{
 
         return orderedArray
     }
+    
+    // Insertion Sorting Algorithm
+    func insertionSort(_ array: inout [Int]) {
+        for i in 1..<array.count {
+            let currentValue = array[i]
+            var j = i - 1
+            while j >= 0 && array[j] > currentValue {
+                array[j + 1] = array[j]
+                j -= 1
+            }
+            array[j + 1] = currentValue
+        }
+    }
+    
+    
 }
 
 var numberArray = [45454, 544,34,34,54,2,464,54656,35,4,3,655,45,4,344,65,4556]
