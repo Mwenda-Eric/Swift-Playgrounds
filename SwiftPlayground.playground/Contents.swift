@@ -1224,3 +1224,73 @@ class TernaryAndReturn{
 }
 
 var fibonacci = TernaryAndReturn().nthFibonacciSumRecursion(9)
+
+//Some swift math functions.
+class MathFunctions{
+    
+    /**
+     Swift provides a set of built-in math functions that can be used to perform common mathematical operations,
+     such as addition, subtraction, multiplication, and division. Here are some examples of math functions in Swift:
+
+     + operator: This operator is used for addition. For example, 1 + 2 returns 3.
+
+     - operator: This operator is used for subtraction. For example, 5 - 2 returns 3.
+
+     * operator: This operator is used for multiplication. For example, 3 * 4 returns 12.
+
+     / operator: This operator is used for division. For example, 8 / 2 returns 4.
+
+     % operator: This operator is used for finding the remainder of a division. For example, 8 % 3 returns 2.
+
+     sqrt() function: This function is used to find the square root of a number.
+     For example, sqrt(16) returns 4.
+
+     pow() function: This function is used to find the power of a number.
+     For example, pow(2,3) returns 8.
+
+     abs() function: This function is used to find the absolute value of a number.
+     For example, abs(-5) returns 5.
+
+     round() function: This function is used to round a decimal number to the nearest whole number.
+     For example, round(3.14) returns 3.
+
+     floor() function: This function is used to round a decimal number down to the nearest whole number.
+     For example, floor(3.14) returns 3.
+
+     ceil() function: This function is used to round a decimal number up to the nearest whole number.
+     For example, ceil(3.14) returns 4.
+
+     max() function: This function is used to find the maximum value of two or more numbers.
+     For example, max(5, 10, 3) returns 10.
+
+     min() function: This function is used to find the minimum value of two or more numbers.
+     For example, min(5, 10, 3) returns 3.
+
+     These are just some examples of math functions in Swift, and there are many more functions available in the Swift standard library
+     and in external libraries that can be used for more advanced mathematical operations.
+
+     It's worth noting that, when working with floating-point numbers, you should be aware of the limitations of floating-point arithmetic,
+     and you should consider using the Decimal type, which provides more precision than Float or Double
+     */
+    
+    static func powerOfNumberBy(number: Double, power: Int) -> Double{
+        return pow(number, Double(power))
+    }
+    
+    static func absoluteValueOf(number: Int) -> Int{
+        return abs(number)
+    }
+    
+    static func squareRootOf(number: Double) -> Double{
+        return sqrt(number)
+    }
+    
+    static func largestNumberIn(_ firstNumber: Int, _ secondNumber: Int, _ thirdNumber: Int) -> Int{
+        return max(firstNumber, secondNumber, thirdNumber)
+    }
+}
+
+var powerNumber = MathFunctions.powerOfNumberBy(number: 34, power: 5)
+var powerConfirmation = 34*34*34*34*34
+
+var maxNumber = MathFunctions.largestNumberIn(431, 5455, 54)
