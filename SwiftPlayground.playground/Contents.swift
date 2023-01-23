@@ -1208,7 +1208,19 @@ var doubleNumber: Int = TypeAlias().doubleClosure(45)
 
 TypeAlias().printArtistData(artistNameAndAge: TypeAlias().artistNameAndAge)
 
-var isCodeValid1: Bool = TypeAlias().isCodeValid(codeName: "MyCard", codeNumber: 4343)
-var isCodeValid2: Bool = TypeAlias().isCodeValid(codeName: "WON", codeNumber: 4343)
-var isCodeValid3: Bool = TypeAlias().isCodeValid(codeName: "WON", codeNumber: 4342)
-var isCodeValid4: Bool = TypeAlias().isCodeValid(codeName: "PROMO", codeNumber: 4342)
+var isCodeValid1: Bool = TypeAlias().isCodeValid(codeName: "MyCard", codeNumber: 4343)//false
+var isCodeValid2: Bool = TypeAlias().isCodeValid(codeName: "WON", codeNumber: 4343)//false
+var isCodeValid3: Bool = TypeAlias().isCodeValid(codeName: "WON", codeNumber: 4342)//true
+var isCodeValid4: Bool = TypeAlias().isCodeValid(codeName: "PROMO", codeNumber: 4342)//true
+
+//Swift Ternary Operator and return statement.
+class TernaryAndReturn{
+    
+    func nthFibonacciSumRecursion(_ nthNumber: Int) -> Int{
+        //base case.
+        
+        return nthNumber > 1 ? nthFibonacciSumRecursion(nthNumber - 2) + nthFibonacciSumRecursion(nthNumber - 1) : nthNumber
+    }
+}
+
+var fibonacci = TernaryAndReturn().nthFibonacciSumRecursion(9)
