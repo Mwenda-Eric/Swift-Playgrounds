@@ -1307,3 +1307,128 @@ var roundDownNumber = MathFunctions.roundDownNumber(number: 4343.9)//4343
 var roundUpNumber = MathFunctions.roundUpNumber(number: 4343.9)//4344
 var roundToNearestWholeNumber = MathFunctions.roundToNearestWholeNumber(number: 4343.9)//4344
 var squareRoot = MathFunctions.squareRootOf(number: 434.3447)//20.84093807869502
+
+//Basic searching and sorting in swift.
+class SearchingAndSorting{
+    
+    //Linear Search -> I'll use a closure for this.
+    typealias LinearSearchAlias = (Int, [Int]) -> Bool
+    private var isNumberPresentLinearSearchClosure: LinearSearchAlias = { (searchNumber: Int, numberArray: [Int]) in
+        for number in numberArray{
+            if number == searchNumber{
+                return true
+            }
+        }
+        return false
+    }
+    
+    func isNumberPresent(numberToSearch: Int, numberArray: [Int]) -> Bool{
+        return isNumberPresentLinearSearchClosure(numberToSearch, numberArray)
+    }
+    
+    typealias SortArrayAlias = (inout [Int]) -> [Int]
+    internal var sortArrayClosure: SortArrayAlias = {(numbersArray: inout [Int]) in
+        for i in 0..<numbersArray.count{
+            for j in 1..<numbersArray.count - i{
+                if(numbersArray[j] < numbersArray[j - 1]){
+                    var temp = numbersArray[j]
+                    numbersArray[j] = numbersArray[j - 1]
+                    numbersArray[j-1] = temp
+                }
+            }
+        }
+        return numbersArray
+    }
+    
+    func mergeSort(array: inout [Int], leftIndex: inout Int, rightIndex: inout Int) -> [Int]{
+        //The initial values of left and right index as they get in the function is 0 and array.count-1
+        //print("Original Array Size is = \(array.count)")
+        
+        if(leftIndex < rightIndex){
+            //Find the Middle Pint.
+            var middlePoint = leftIndex + (rightIndex - leftIndex) / 2
+            var leftIndexRightHalf = middlePoint + 1
+            
+            //Sort the first and the Second halves recursively.
+            mergeSort(array: &array, leftIndex: &leftIndex, rightIndex: &middlePoint)//This will be used to sort the first half.
+            mergeSort(array: &array, leftIndex: &leftIndexRightHalf, rightIndex: &rightIndex)//to sort right half.
+            
+            //Now merge the 2 sorted halves.
+            mergeArray(&array, leftIndex, middlePoint, rightIndex)
+        }
+        //By this point the entire array has been sorted.
+        //Complexity of this algorithm in all cases is (0(n log n))
+        return array
+    }
+    
+    func mergeArray(_ array: inout [Int], _ leftIndex: Int, _ middlePoint: Int, _ rightIndex: Int){
+        //find the size of the 2 sub arrays to be merged.
+        var leftHalfSize: Int = middlePoint - leftIndex + 1
+        var rightHalfSize: Int = rightIndex - middlePoint
+    
+        //Create Temporary arrays to be filled for both halves.
+        var leftHalfArray: [Int] = [Int]()
+        leftHalfArray.reserveCapacity(leftHalfSize)//You can set this or not. -> In swift that is . But in C# YOU MUST!
+        var rightHalfArray: [Int] = []
+        rightHalfArray.reserveCapacity(rightHalfSize)
+        print("AAAA")
+        print("Left Half Capacity = \(leftHalfArray.count):\(leftHalfSize) Right Half Capacity = \(rightHalfArray.count):\(rightHalfSize)")
+        
+        //Copy the data into the empty temporary arrays.
+        for i in 0..<leftHalfSize{
+            leftHalfArray[i] = array[leftIndex + i]
+        }
+        for j in 0..<rightHalfSize{
+            rightHalfArray[j] = array[middlePoint + 1 + j]
+        }
+        print("BBBB")
+        //Merge the temporary arrays now.
+        
+        //initial indexes of the first and second temporary arrays.
+        var leftIndex: Int = 0
+        var rightIndex: Int = 0
+        
+        //initial index of the merged array.
+        var mergedIndex: Int = 0
+        
+        while(leftIndex < leftHalfSize && rightIndex < rightHalfSize){
+            
+            if(leftHalfArray[leftIndex] <= rightHalfArray[rightIndex]){
+                array[mergedIndex] = leftHalfArray[leftIndex]
+                leftIndex += 1
+            }else{
+                array[mergedIndex] = rightHalfArray[rightIndex]
+                rightIndex += 1
+            }
+            mergedIndex += 1
+        }
+        
+        print("CCCC")
+        
+        //Copy remaining elements of LeftArray if Any exist
+        while(leftIndex < leftHalfSize){
+            array[mergedIndex] = leftHalfArray[leftIndex]
+            leftIndex += 1
+            mergedIndex += 1
+        }
+        print("DDDD")
+        //Copy remaining elements of the rightArray if any exist.
+        while(rightIndex < rightHalfSize){
+            array[mergedIndex] = rightHalfArray[rightIndex]
+            rightIndex += 1
+            mergedIndex += 1
+        }
+        print("EEEE")
+    }
+}
+
+var numberArray = [45454, 544,34,34,54,2,464,54656,35,4,3,655,45,4,344,65,4556]
+var isNumberPresent = SearchingAndSorting().isNumberPresent(numberToSearch: 545, numberArray: numberArray)//false
+
+type(of: SearchingAndSorting().sortArrayClosure)
+var initialLeftIndex = 0
+var initialRightIndex = numberArray.count - 1
+
+var mergeSortedArray: [Int] = SearchingAndSorting().mergeSort(array: &numberArray, leftIndex: &initialLeftIndex , rightIndex: &initialRightIndex)
+//print("Merge Sorted Number Array is : \(SearchingAndSorting().mergeSort(array: &numberArray, leftIndex: 0, rightIndex: numberArray.count-1))")
+//print("Sorted Numbers Array is : \(SearchingAndSorting().sortArrayClosure(&numberArray))")
