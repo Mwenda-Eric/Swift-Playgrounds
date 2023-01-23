@@ -1343,6 +1343,8 @@ class SearchingAndSorting{
     func mergeSort(array: inout [Int], leftIndex: inout Int, rightIndex: inout Int) -> [Int]{
         //The initial values of left and right index as they get in the function is 0 and array.count-1
         //print("Original Array Size is = \(array.count)")
+        print("right index value = \(rightIndex) : Left Index Value = \(leftIndex) : Array Size = \(array.count)")
+        guard array.count > 1 else {return array}
         
         if(leftIndex < rightIndex){
             //Find the Middle Pint.
@@ -1354,14 +1356,14 @@ class SearchingAndSorting{
             mergeSort(array: &array, leftIndex: &leftIndexRightHalf, rightIndex: &rightIndex)//to sort right half.
             
             //Now merge the 2 sorted halves.
-            mergeArray(&array, leftIndex, middlePoint, rightIndex)
+            mergeArray(&array, &leftIndex, &middlePoint, &rightIndex)
         }
         //By this point the entire array has been sorted.
         //Complexity of this algorithm in all cases is (0(n log n))
         return array
     }
     
-    func mergeArray(_ array: inout [Int], _ leftIndex: Int, _ middlePoint: Int, _ rightIndex: Int){
+    func mergeArray(_ array: inout [Int], _ leftIndex: inout Int, _ middlePoint: inout Int, _ rightIndex: inout Int){
         //find the size of the 2 sub arrays to be merged.
         var leftHalfSize: Int = middlePoint - leftIndex + 1
         var rightHalfSize: Int = rightIndex - middlePoint
@@ -1420,15 +1422,59 @@ class SearchingAndSorting{
         }
         print("EEEE")
     }
+    
+    func mergeSort(_ array: [Int]) -> [Int] {
+        guard array.count > 1 else { return array }
+        let middleIndex = array.count / 2
+        let leftArray = mergeSort(Array(array[0..<middleIndex]))
+        let rightArray = mergeSort(Array(array[middleIndex..<array.count]))
+        return merge(leftArray: leftArray, rightArray: rightArray)
+    }
+
+    func merge(leftArray: [Int], rightArray: [Int]) -> [Int] {
+        var leftIndex = 0
+        var rightIndex = 0
+        var orderedArray: [Int] = []
+
+        while leftIndex < leftArray.count && rightIndex < rightArray.count {
+            let leftElement = leftArray[leftIndex]
+            let rightElement = rightArray[rightIndex]
+            if leftElement < rightElement {
+                orderedArray.append(leftElement)
+                leftIndex += 1
+            } else if leftElement > rightElement {
+                orderedArray.append(rightElement)
+                rightIndex += 1
+            } else {
+                orderedArray.append(leftElement)
+                leftIndex += 1
+                orderedArray.append(rightElement)
+                rightIndex += 1
+            }
+        }
+        while leftIndex < leftArray.count {
+            orderedArray.append(leftArray[leftIndex])
+            leftIndex += 1
+        }
+        while rightIndex < rightArray.count {
+            orderedArray.append(rightArray[rightIndex])
+            rightIndex += 1
+        }
+
+        return orderedArray
+    }
 }
 
 var numberArray = [45454, 544,34,34,54,2,464,54656,35,4,3,655,45,4,344,65,4556]
-var isNumberPresent = SearchingAndSorting().isNumberPresent(numberToSearch: 545, numberArray: numberArray)//false
+//var isNumberPresent = SearchingAndSorting().isNumberPresent(numberToSearch: 545, numberArray: numberArray)//false
 
 type(of: SearchingAndSorting().sortArrayClosure)
 var initialLeftIndex = 0
 var initialRightIndex = numberArray.count - 1
 
-var mergeSortedArray: [Int] = SearchingAndSorting().mergeSort(array: &numberArray, leftIndex: &initialLeftIndex , rightIndex: &initialRightIndex)
+//var mergeSortedArray: [Int] = SearchingAndSorting().mergeSort(array: &numberArray, leftIndex: &initialLeftIndex , rightIndex: &initialRightIndex)
 //print("Merge Sorted Number Array is : \(SearchingAndSorting().mergeSort(array: &numberArray, leftIndex: 0, rightIndex: numberArray.count-1))")
 //print("Sorted Numbers Array is : \(SearchingAndSorting().sortArrayClosure(&numberArray))")
+
+var arrayMergeSorted: [Int] = SearchingAndSorting().mergeSort(numberArray)
+print(arrayMergeSorted)
