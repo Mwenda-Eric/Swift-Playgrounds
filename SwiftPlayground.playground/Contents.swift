@@ -757,6 +757,18 @@ class Audi: Car, CarDataSource{
     }
 }
 
+protocol MyProtocol{
+    var myName: String {get set}
+    func getMyName() -> String
+}
+
+struct MyProtocolTest: MyProtocol{
+    var myName: String = "Eric Mwenda"
+    func getMyName() -> String {
+        return myName
+    }
+}
+
 var myCar = Audi()
 var myDriversName: String = myCar.getDriversName()
 var myCarsManufacturer = myCar.carManufacturer//Accessing the parent class.
